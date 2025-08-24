@@ -102,7 +102,7 @@ const Header = () => {
                 ) : (
                   <a
                     href={item.href}
-                    className="text-foreground hover:text-primary transition-colors duration-200"
+                    className="text-foreground hover:text-primary transition-colors duration-200 whitespace-nowrap"
                   >
                     {item.label}
                   </a>
