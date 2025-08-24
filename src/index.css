@@ -9,34 +9,49 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* EFCC-ZTC Brand Colors */
+    --primary: 0 100% 35.3%; /* Deep red #b40000 */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 0 100% 30%;
+    --primary-light: 0 100% 45%;
+    
+    --secondary: 0 0% 97.3%; /* Light gray #f8f8f8 */
+    --secondary-foreground: 0 0% 10%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 4%; /* Near black */
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 90%;
+    --input: 0 0% 94%;
+    --ring: 0 100% 35.3%;
 
     --radius: 0.5rem;
+
+    /* Custom Design System Tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-hover)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--secondary)) 100%);
+    --shadow-soft: 0 4px 20px hsl(var(--primary) / 0.1);
+    --shadow-elegant: 0 10px 40px hsl(var(--primary) / 0.15);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Typography */
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
     --sidebar-background: 0 0% 98%;
 
@@ -99,7 +114,53 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-[var(--font-body)];
+  }
+}
+
+@layer components {
+  .btn-hero {
+    @apply inline-flex items-center justify-center rounded-lg px-8 py-4 text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+  
+  .btn-primary {
+    @apply btn-hero bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+  
+  .btn-outline {
+    @apply btn-hero border-2 border-accent bg-transparent text-accent hover:bg-accent hover:text-accent-foreground;
+  }
+  
+  .section-padding {
+    @apply px-4 py-16 md:px-8 lg:px-12 xl:px-24;
+  }
+  
+  .container-max {
+    @apply mx-auto max-w-7xl;
+  }
+  
+  .heading-hero {
+    @apply font-[var(--font-heading)] text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  }
+  
+  .heading-section {
+    @apply font-[var(--font-heading)] text-2xl md:text-3xl lg:text-4xl font-bold text-accent;
+  }
+  
+  .card-elegant {
+    @apply rounded-2xl bg-card p-6 shadow-soft transition-all duration-300 hover:shadow-elegant hover:-translate-y-1;
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-subtle {
+    background: var(--gradient-subtle);
   }
 }
